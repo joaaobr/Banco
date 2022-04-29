@@ -1,14 +1,16 @@
-function validationLogin() {
+function validationLogado() {
     const dados = getDados('_dados_user')
-
-    if((dados.logado)) {
+    console.log(!dados.logado)
+    if((!dados.logado)) {
         setDados('_dados_user', JSON.stringify({logado: false}))
         window.location.href = '/login'
+    } else if(dados.logado != true) {
+        setDados('_dados_user', JSON.stringify({logado: false}))
     }
 }
 
-//validationLogin()
+validationLogado()
 
-setInterval(() => {
-    //validationLogin()
-}, 1000)
+setInterval(
+    validationLogado
+, 1000)

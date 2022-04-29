@@ -5,9 +5,10 @@ function login() {
     const cpf = input3.value
     // const email = input1.value
     const senha = input2.value
+    alert(cpf)
+    alert(senha)
     const obj = { cpf, senha }
     console.log(obj)
-
     POSThttp('/login', obj)
     .then(res => {
         window.location.href = '/'

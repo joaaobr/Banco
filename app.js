@@ -20,20 +20,26 @@ app.get('/login', (req, res) => {
 app.post('/login', async(req, res) => {
     try {
         const users = await UserModel.find(req.body)
-         console.log(req.body)
+         console.log('Body: '+req.body)
          console.log(users[0])
         if(users[0]) {
             const dados = {
                 nome: users[0].nome,
                 cpf: users[0].cpf,
+                email: users[0].email,
                 logado: true
             }
+
+            
             //console.log(dados)
             res.status(200).json(dados)
+        }else if(users[0] == undefined) {
+            res.status(500).json({ logado: false })
         }
         
     } catch (error) {
-        res.status(500).json(error)
+        console.log(error)
+        res.status(500).json({error})
     }
 })
 
