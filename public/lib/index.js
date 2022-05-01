@@ -6,13 +6,13 @@ function POSThttp(url, OBJbody) {
         body: JSON.stringify(OBJbody),
       }).then((res) => {
         if (res.ok) {
-          console.log(res);
+          //console.log(res);
           return resolve(res.text());
-          console.log(res);
+          //console.log(res);
           return res.text();
         }
         reject(res);
-        console.log(reject);
+        //console.log(reject);
       });
     });
   }

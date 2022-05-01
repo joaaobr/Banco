@@ -39,13 +39,16 @@ app.get('/login', (req, res) => {
 app.post('/login', async(req, res) => {
     try {
         const users = await UserModel.find(req.body)
-         console.log('Body: '+req.body)
-         console.log(users[0])
+         //console.log('Body: '+req.body)
+         //console.log(users[0])
         if(users[0]) {
             const dados = {
                 nome: users[0].nome,
+                sobrenome: users[0].sobrenome,
                 cpf: users[0].cpf,
                 email: users[0].email,
+                id: users[0]._id,
+                saldo: users[0].saldo,
                 logado: true
             }
 
@@ -82,11 +85,21 @@ app.post('/create-acount', async(req, res) => {
 app.post('/update', async(req, res) => {
     try {
         //const id = req.params.id
-        console.log(req.body)
+        console.log('body: '+req.body)
         console.log('id: '+ req.body.id)
-        const user = await UserModel.findByIdAndUpdate(req.body.id, req.body, {new: true}) 
-        console.log(user)
-        res.status(200).json(user)
+        const user = await UserModel.findByIdAndUpdate(req.body.id, req.body, {new: true})
+        const dados = {
+            nome: user.nome,
+            sobrenome: user.sobrenome,
+            cpf: user.cpf,
+            email: user.email,
+            id: user._id,
+            saldo: user.saldo,
+            logado: true
+        } 
+        console.log('user: ' , dados)
+        //console.log(user)
+        res.status(200).json(dados)
     } catch (error) {
         console.log(error)
         res.status(500).json(error)
@@ -100,8 +113,13 @@ app.get('/', (req, res) => {
 })
 
 
-
-
+app.post('/saldo', async(req, res) => {
+    try {
+        const user = UserModel.findByIdAndUpdate()
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 
 
 
