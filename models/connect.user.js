@@ -6,19 +6,26 @@ const userSchema = new mongoose.Schema({
     nome: {
         type: String
     },
+    sobrenome: {
+        type: String
+    },
+    idade: {
+        type: Date
+    },
     email: {
         type: String,
-        unique: true
+        unique: true,
     },
     senha: {
         type: String
     },
-    dinheiro: {
+    saldo: {
         type: Number
     },
     cpf: {
         type: Number,
-        unique: true
+        unique: true,
+        maxlength: 11
     }
 })
 
