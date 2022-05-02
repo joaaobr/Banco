@@ -113,10 +113,23 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/saldo', async(req, res) => {
+app.post('/EnviarSaldo', async(req, res) => {
     try {
-        const user = UserModel.findByIdAndUpdate()
+        const search_user = await UserModel.find(req.body.cpf)
+
+        console.log('search user: ' + search_user)
+
+        const dados = {
+            cpf: search_user.cpf,
+            saldo: search_user.saldo,
+            id: search_user.id
+        }
+
+        console.log('dados: ' + dados)
+
+        res.status(200).json(dados)
     } catch (error) {
+        console.log(error)
         res.status(500).json(error)
     }
 })

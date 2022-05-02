@@ -14,14 +14,27 @@
     <p>Efetuar Deposito: </p>
     <input type="number" id="saldo2">
     <button onclick="adicionar()">Depositar</button>
+    <br>
 
+    <p>sacar dinheiro</p>
+    <input type="number" id="sacar">
+    <button onclick="sacar()">Sacar</button>
 
-    <!--  -->
-    <script src="/operacoes-bancarias/adicionar.js"></script>
+    <p>Enviar saldo para outras contas</p>
+    <input type="text" placeholder="CPF" id="CPFenviado">
+    <input type="text" placeholder="dinheiro" id="SALDOenviado">
+    <button onclick="enviarSaldo()">Enviar</button>
+
+    <!--                                                  -->
     <script src="/lib/index.js"></script>
     <script src="/lib/localStorage.js"></script>
+    <!--                                                  -->
     <script src="/validations/validationLogin.js"></script>
     <script src="/validations/validationData.js"></script>
+    <!--                                                  -->
+    <script src="/operacoes-bancarias/sacar.js"></script>
+    <script src="/operacoes-bancarias/adicionar.js"></script>
+    <!--                                                  -->
     <script src="/insertText.js"></script>
 </body>
 </html>

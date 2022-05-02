@@ -15,5 +15,10 @@ h1.appendChild(text1)
 const text2 = document.createTextNode(dados.cpf)
 h2.appendChild(text2)
 
-const text3 = document.createTextNode(dados.saldo)
-p1.appendChild(text3)
+if(dados.saldo == undefined) {
+    const text4 = document.createTextNode('Não tem nenhum saldo!')
+    p1.appendChild(text4)
+} else if(dados.saldo > 0) {
+    const text3 = document.createTextNode(dados.saldo)
+    p1.appendChild(text3)
+}

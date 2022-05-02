@@ -7,7 +7,7 @@ function login() {
     console.log(obj)
     POSThttp('/login', obj)
     .then(res => {
-
+        
         window.location.href = '/'
         setDados('_dados_user', res)
         console.log(res)

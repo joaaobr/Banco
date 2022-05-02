@@ -3,7 +3,9 @@ function validationLogin() {
     const cpf = dados.cpf
     const nome = dados.nome
     const email = dados.email
-    const obj = { nome, email, cpf }
+    const saldo = dados.saldo
+    const id = dados.id
+    const obj = { nome, email, cpf, saldo, id }
 
     if(cpf == undefined || !email || !nome) {
         setDados('_dados_user', JSON.stringify({ logado: false }))
@@ -15,6 +17,7 @@ function validationLogin() {
     .then(res => {
     })
     .catch(err => {
+        window.location.reload()
         alert("Dados Invalidos!!")
         setDados('_dados_user', JSON.stringify({ logado: false }))
         window.location.href = '/login'
